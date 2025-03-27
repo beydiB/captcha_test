@@ -2,7 +2,7 @@ from seleniumbase import SB
 
 with SB(uc=True, test=True) as sb:
     url = "https://seleniumbase.io/apps/turnstile"
-    sb.uc_open_with_reconnect(url, reconnect_time=2)
+    sb.uc_open_with_reconnect(url, 4)
     sb.uc_gui_click_captcha()
     sb.assert_element("img#captcha-success", timeout=3)
     sb.set_messenger_theme(location="top_left")
