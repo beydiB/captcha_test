@@ -1,0 +1,36 @@
+go.py:3:SB
+--------------------------------------------------------------------
+Last Page: https://seleniumbase.io/apps/turnstile
+ Duration: 5.38s
+  Browser: Chrome 134.0.6998.166
+   Driver: chromedriver 134.0.6998.165
+Timestamp: 1743042129  (Unix Timestamp)
+     Date: Thursday, 27 March 2025
+     Time: 10:22:09 AM  (PST, UTC+08:00)
+--------------------------------------------------------------------
+Traceback:
+  Traceback (most recent call last):
+  File "/Users/kami/Documents/gitaction/go.py", line 7, in <module>
+    sb.assert_element("img#captcha-success", timeout=3)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/seleniumbase/fixtures/base_case.py", line 9711, in assert_element
+    self.wait_for_element_visible(selector, by=by, timeout=timeout)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/seleniumbase/fixtures/base_case.py", line 9117, in wait_for_element_visible
+    return page_actions.wait_for_element_visible(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self.driver,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        original_selector=original_selector,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/seleniumbase/fixtures/page_actions.py", line 521, in wait_for_element_visible
+    timeout_exception(ElementNotVisibleException, message)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/seleniumbase/fixtures/page_actions.py", line 267, in timeout_exception
+    raise exc(msg)
+seleniumbase.common.exceptions.ElementNotVisibleException: Message: 
+ Element {img#captcha-success} was not visible after 3 seconds!
+
