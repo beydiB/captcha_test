@@ -1,9 +1,5 @@
 import os
-from dotenv import load_dotenv
 from seleniumbase import SB
-
-# Load environment variables from .env file
-load_dotenv()
 
 print(os.getenv("PROXY"))
 
