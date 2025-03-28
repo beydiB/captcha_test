@@ -9,12 +9,15 @@ on:
   workflow_dispatch:
     branches:
 
+env:
+  PROXY: ${{ secrets.PROXY }}
+
 jobs:
   build:
 
     env:
       PY_COLORS: "1"
-      PROXY: ${{ secrets.PROXY }}
+      
     strategy:
       fail-fast: false
       max-parallel: 1
