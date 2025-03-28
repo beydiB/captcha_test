@@ -1,6 +1,7 @@
 import os
 from seleniumbase import SB
 
+print("the secret is ", os.environ["PROXY"])  #leave
 
 with SB(uc=True, test=True, proxy=os.environ["PROXY"]) as sb:
     url = "https://gitlab.com/users/sign_in"
@@ -10,4 +11,3 @@ with SB(uc=True, test=True, proxy=os.environ["PROXY"]) as sb:
     sb.uc_gui_handle_captcha()
     sb.sleep(20)
 
-    #leave window open
