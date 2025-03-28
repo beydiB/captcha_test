@@ -1,5 +1,11 @@
 import os
+from dotenv import load_dotenv
 from seleniumbase import SB
+
+# Load environment variables from .env file
+load_dotenv()
+
+print(os.getenv("PROXY"))
 
 with SB(uc=True, test=True, proxy=os.getenv("PROXY")) as sb:
     url = "https://gitlab.com/users/sign_in"
@@ -9,4 +15,4 @@ with SB(uc=True, test=True, proxy=os.getenv("PROXY")) as sb:
     sb.uc_gui_handle_captcha()
     sb.sleep(20)
 
-    #leveae window open
+    #leave window open

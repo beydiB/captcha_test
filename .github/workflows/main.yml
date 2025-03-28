@@ -75,5 +75,7 @@ jobs:
     #  run: |
     #    python test_user_agent.py
     - name: Run python test_cloudfare.py --debug
+      env:
+        PROXY: ${{ secrets.PROXY }}
       run: |
         python test_cloudfare.py --debug
