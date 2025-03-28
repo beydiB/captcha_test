@@ -1,7 +1,6 @@
 import os
 from seleniumbase import SB
 
-print("the secret is ", os.environ["PROY"])  #leave
 
 with SB(uc=True, test=True, proxy=os.environ["PROXY"]) as sb:
     url = "https://gitlab.com/users/sign_in"
