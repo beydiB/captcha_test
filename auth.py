@@ -32,7 +32,7 @@ def login(sb):
         # Click continue button after email
         print("Clicking continue button after email...")
         sb.click("#login_password_continue")
-        sb.sleep(4)
+        sb.sleep(2)
         
         # Enter password
         sb.assert_element("#login_password", timeout=10)
@@ -57,6 +57,7 @@ def login(sb):
             print("Security question detected!")
             
             # Enter mother's maiden name
+            sb.assert_element("#login_answer", timeout=10)
             print("Entering mother's maiden name...")
             sb.type("#login_answer", "Sidibe")  # Replace with actual mother's maiden name
             
@@ -70,6 +71,7 @@ def login(sb):
             
             # Click continue button
             print("Clicking continue button after security question...")
+            sb.assert_element("#login_control_continue", timeout=10)
             sb.click("#login_control_continue")
             sb.sleep(10)
             

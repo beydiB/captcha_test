@@ -35,7 +35,7 @@ def main():
         
         # Check if we got through
         #give time to load
-        sb.sleep(10)
+        sb.assert_element("#job-tile", timeout=10)
         if "job-tile" not in sb.get_page_source():
             print("Could not find job listings. Page may not have loaded properly.")
             return
