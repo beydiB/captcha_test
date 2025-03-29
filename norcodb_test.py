@@ -1,10 +1,11 @@
 import requests
 import json
+import os
 
-url = "https://app.nocodb.com/api/v2/tables/m0ie1m31ppddrew/records?limit=87"
+url = f"https://app.nocodb.com/api/v2/tables/{os.environ['NOCODB_TABLE_MARKETING']}/records?limit=87"
 
 headers = {
-    "xc-token": "rdtB29RbpxOXAEp9Lhe6idL80ifLwi0QEGNR11TI",
+    "xc-token": os.environ['NOCODB_TOKEN'],
     "Content-Type": "application/json"
 }
 
@@ -26,14 +27,3 @@ try:
 
 except Exception as e:
     print(f"Error sending data: {e}")
-
-    # Try to parse and pretty print JSON response if available
-    # try:
-#         response_json = response.json()
-#         print("\nFormatted Response:")
-#         print(json.dumps(response_json, indent=2))
-#     except json.JSONDecodeError:
-#         print("Response is not in JSON format")
-
-# except Exception as e:
-#     print(f"Error sending data: {e}")

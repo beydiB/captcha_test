@@ -20,8 +20,25 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
 
 # Virtual Environment
+venv/
+ENV/
+.env
+.venv
+env/
 venv/
 ENV/
 
@@ -30,13 +47,26 @@ ENV/
 .vscode/
 *.swp
 *.swo
+.project
+.pydevproject
+.settings/
+*.sublime-workspace
+*.sublime-project
 
 # OS
 .DS_Store
 Thumbs.db
+.directory
+desktop.ini
 
 # Project specific
 *.log
 *.png
 *.jpg
-*.jpeg 
+*.jpeg
+downloaded_files/
+*.csv
+*.xlsx
+*.xls
+*.db
+*.sqlite3

@@ -11,6 +11,11 @@ on:
 
 env:
   PROXY: ${{ secrets.PROXY }}
+  UPWORK_EMAIL: ${{ secrets.UPWORK_EMAIL }}
+  UPWORK_PASSWORD: ${{ secrets.UPWORK_PASSWORD }}
+  UPWORK_SEARCH_URL: ${{ secrets.UPWORK_SEARCH_URL }}
+  NOCODB_TABLE_MARKETING: ${{ secrets.NOCODB_TABLE_MARKETING }}
+  NOCODB_TOKEN: ${{ secrets.NOCODB_TOKEN }}
 
 jobs:
   build:
@@ -78,8 +83,8 @@ jobs:
     #- name: Run python test_user_agent.py
     #  run: |
     #    python test_user_agent.py
-    - name: Run python test_cloudfare.py --debug
+    - name: Run python go.py --debug
       # env:
       #   PROXY: ${{ secrets.PROXY }}
       run: |
-        python test_cloudfare.py --debug
+        python go.py --debug
