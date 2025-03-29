@@ -59,7 +59,7 @@ def login(sb):
             # Enter mother's maiden name
             sb.assert_element("#login_answer", timeout=10)
             print("Entering mother's maiden name...")
-            sb.type("#login_answer", "Sidibe")  # Replace with actual mother's maiden name
+            sb.type("#login_answer", os.environ["UPWORK_SECURITY_QUESTION_ANSWER"])  
             
             # Check "Remember this device" if present
             try:
