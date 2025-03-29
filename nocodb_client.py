@@ -41,11 +41,11 @@ class NocodbClient:
             if response.status_code == 200:
                 response_json = response.json()
                 print("\nNocoDB Response:")
-                print(json.dumps(response_json, indent=2))
+                # print(json.dumps(response_json, indent=2))
                 
                 # Extract job_uids from the list of jobs
                 existing_jobs = response_json.get('list', [])
-                print(f"\nNumber of existing jobs from NocoDB: {len(existing_jobs)}")
+                # print(f"\nNumber of existing jobs from NocoDB: {len(existing_jobs)}")
                 
                 
                 job_uids = {job.get('job_uid') for job in existing_jobs if job.get('job_uid')}
@@ -95,9 +95,9 @@ class NocodbClient:
         print(f"\nNew jobs after filtering: {len(new_jobs)}")
         
         # Debug: Print first few filtered jobs
-        print("\nDebug: First few filtered jobs")
-        for job in new_jobs[:5]:
-            print(f"  {job.get('job_uid')}")
+        # print("\nDebug: First few filtered jobs")
+        # for job in new_jobs[:5]:
+        #     print(f"  {job.get('job_uid')}")
 
         if not new_jobs:
             print("No new jobs to send.")
