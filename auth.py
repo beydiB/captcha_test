@@ -16,7 +16,7 @@ def login(sb):
     """
     print("Attempting to login...")
     try:
-        # sb.wait_for_element('a[href="/ab/account-security/login"]', timeout=60)
+        sb.assert_element('a[href="/ab/account-security/login"]', timeout=10)
         login_link = sb.find_element('a[href="/ab/account-security/login"]')
         print("Login link found - not logged in")
         # Click the login link
@@ -25,7 +25,7 @@ def login(sb):
         sb.sleep(2)
         
         # Enter email
-        sb.wait_for_element("#login_username")
+        sb.assert_element("#login_username", timeout=10)
         print("Entering email...")
         sb.type("#login_username", EMAIL)
         
@@ -35,7 +35,7 @@ def login(sb):
         sb.sleep(4)
         
         # Enter password
-        sb.wait_for_element("#login_password")
+        sb.assert_element("#login_password", timeout=10)
         print("Entering password...")
         sb.type("#login_password", PASSWORD)
         
