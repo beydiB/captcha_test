@@ -16,6 +16,7 @@ env:
   UPWORK_SEARCH_URL: ${{ secrets.UPWORK_SEARCH_URL }}
   NOCODB_TABLE_MARKETING: ${{ secrets.NOCODB_TABLE_MARKETING }}
   NOCODB_TOKEN: ${{ secrets.NOCODB_TOKEN }}
+  MY_PROXY: ${{ secrets.MY_PROXY }}
 
 jobs:
   build:

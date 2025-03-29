@@ -14,7 +14,7 @@ from nocodb_client import default_client
 def main():
     url = os.environ['UPWORK_SEARCH_URL']
     
-    with SB(uc=True, test=True, proxy=os.environ["PROXY"], locale="en") as sb:
+    with SB(uc=True, test=True, proxy=os.environ["MY_PROXY"], locale="en") as sb:
         sb.uc_open_with_reconnect(url, 8)
         sb.uc_gui_click_captcha()
         sb.sleep(2)
