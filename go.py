@@ -15,9 +15,13 @@ def main():
     url = os.environ['UPWORK_SEARCH_URL']
     
     with SB(uc=True, test=True, proxy=os.environ["PROXY"], locale="en") as sb:
-        sb.uc_open_with_reconnect(url, 4)
+        sb.activate_cdp_mode(url)
         sb.uc_gui_click_captcha()
         sb.sleep(2)
+        sb.uc_gui_click_captcha()
+        sb.sleep(2)
+
+
         
         # First try to login
         if not login(sb):
