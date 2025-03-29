@@ -20,6 +20,10 @@ def main():
         sb.sleep(2)
         sb.uc_gui_click_captcha()
         sb.sleep(2)
+        sb.uc_gui_click_captcha()
+        sb.sleep(2)
+        sb.uc_gui_click_captcha()
+        sb.sleep(2)
 
 
         
