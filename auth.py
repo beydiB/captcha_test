@@ -16,7 +16,7 @@ def login(sb):
     """
     print("Attempting to login...")
     try:
-        sb.assert_element('a[href="/ab/account-security/login"]', timeout=10)
+        sb.assert_element('a[href="/ab/account-security/login"]', timeout=30)
         login_link = sb.find_element('a[href="/ab/account-security/login"]')
         print("Login link found - not logged in")
         # Click the login link
@@ -53,7 +53,7 @@ def login(sb):
         
         # Check if security question appears
         try:
-            security_question = sb.find_element("#login_answer", timeout=5)
+            security_question = sb.find_element("#login_answer", timeout=10)
             print("Security question detected!")
             
             # Enter mother's maiden name
@@ -63,7 +63,7 @@ def login(sb):
             
             # Check "Remember this device" if present
             try:
-                remember_device = sb.find_element("#login_remember", timeout=2)
+                remember_device = sb.find_element("#login_remember", timeout=10)
                 print("Checking 'Remember this device' checkbox...")
                 remember_device.click()
             except:
