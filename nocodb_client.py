@@ -24,11 +24,58 @@ class NocodbClient:
             "sort": "-job_uid",
         }
 
-       
+    def cleanup_old_records(self, max_rows=100):
+        """
+        Delete oldest records if total rows exceed max_rows.
+        
+        Args:
+            max_rows: Maximum number of rows to keep (default: 100)
+            
+        Returns:
+            bool: True if cleanup was successful, False otherwise
+        """
+        try:
+            # Get total number of rows
+            response = requests.get(self.base_url, headers=self.headers)
+            if response.status_code != 200:
+                print(f"Failed to get total rows. Response: {response.text}")
+                return False
+                
+            total_rows = response.json()['pageInfo']['totalRows']
+            print(f"Total rows in database: {total_rows}")
+            
+            if total_rows > max_rows:
+                # Get oldest records to delete
+                delete_params = {
+                    "limit": 25,
+                    "sort": "job_uid",  # Sort ascending to get oldest records
+                    "fields": "id"
+                }
+                response = requests.get(self.base_url, headers=self.headers, params=delete_params)
+                
+                if response.status_code != 200:
+                    print(f"Failed to get records to delete. Response: {response.text}")
+                    return False
+                    
+                records_to_delete = response.json()['list']
+                print(f"Found {len(records_to_delete)} records to delete")
+                
+                # Delete the records
+                delete_response = requests.delete(self.base_url, headers=self.headers, json=records_to_delete)
+                if delete_response.status_code == 200:
+                    print(f"Successfully deleted {len(records_to_delete)} old records")
+                    return True
+                else:
+                    print(f"Failed to delete records. Response: {delete_response.text}")
+                    return False
+            else:
+                print("No cleanup needed - total rows within limit")
+                return True
+                
+        except Exception as e:
+            print(f"Error during cleanup: {e}")
+            return False
 
-
-   
-   
     def get_existing_job_uids(self):
         """
         Get all existing job_uids from NocoDB.
