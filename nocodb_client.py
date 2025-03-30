@@ -120,6 +120,9 @@ class NocodbClient:
         high_rated_jobs = [job for job in jobs if job.get("rating") and float(job["rating"]) > 4.2]
         print(f"High rated jobs to process: {len(high_rated_jobs)}")
         
+        # Clean up old records before sending new ones
+        self.cleanup_old_records(max_rows=100)
+        
         # Get existing job_uids from NocoDB
         existing_job_uids = self.get_existing_job_uids()
         print(f"Existing job_uids in NocoDB: {existing_job_uids}")
@@ -140,11 +143,6 @@ class NocodbClient:
         # Filter out jobs that already exist
         new_jobs = [job for job in high_rated_jobs if job.get("job_uid") not in existing_job_uids]
         print(f"\nNew jobs after filtering: {len(new_jobs)}")
-        
-        # Debug: Print first few filtered jobs
-        # print("\nDebug: First few filtered jobs")
-        # for job in new_jobs[:5]:
-        #     print(f"  {job.get('job_uid')}")
 
         if not new_jobs:
             print("No new jobs to send.")
