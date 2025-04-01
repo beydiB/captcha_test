@@ -24,7 +24,7 @@ class NocodbClient:
             "sort": "-job_uid",
         }
 
-    def cleanup_old_records(self, max_rows=100):
+    def cleanup_old_records(self, max_rows=500):
         """
         Delete oldest records if total rows exceed max_rows.
         
@@ -47,7 +47,7 @@ class NocodbClient:
             if total_rows > max_rows:
                 # Get oldest records to delete
                 delete_params = {
-                    "limit": 25,
+                    "limit": 100,
                     "sort": "job_uid",  # Sort ascending to get oldest records
                     "fields": "Id,post_date",  # Only get id and job_uid fields
                     # "select": "id"  # Explicitly select only these fields
