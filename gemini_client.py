@@ -12,7 +12,6 @@ def test_gemini_api(jobs):
     
     # Resume Summary
     resume_summary = os.getenv("RESUME")
-    print(f"Resume Summary: {resume_summary}")
 
     # Job Listings
     job_listings = jobs
@@ -32,7 +31,7 @@ Return your response as a JSON array containing job matches. Each match should b
 - "relevant": True or False
 - "match_score": A percentage indicating how well the job matches the resume
 - "matching_skills": A list of skills from the resume that match the job requirements
-- "score_explanation": A brief explanation of why the match score was given
+- "score_explanation": Provide a brief explanation of the match score based on relevant experience, required skills, and overall fit for the role. Keep the response concise and objective, without mentioning any names or using pronouns.
 
 Ensure the JSON is well-formed and can be parsed without errors.
 """
