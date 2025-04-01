@@ -1,8 +1,11 @@
 import os
+from dotenv import load_dotenv
+
+load_dotenv()  # Load environment variables from .env file
 
 # Login credentials
-EMAIL = os.environ['UPWORK_EMAIL']
-PASSWORD = os.environ['UPWORK_PASSWORD']
+EMAIL = os.environ['UPWORK_EMAIL'] or os.getenv('UPWORK_EMAIL')
+PASSWORD = os.environ['UPWORK_PASSWORD'] or os.getenv('UPWORK_PASSWORD')
 
 def login(sb):
     """

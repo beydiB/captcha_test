@@ -10,9 +10,13 @@ from selenium.webdriver.common.by import By
 from job_extractor import extract_posted_date, extract_job_data
 from auth import login
 from nocodb_client import default_client
+from dotenv import load_dotenv
+
+
 
 def main():
-    url = os.environ['UPWORK_SEARCH_URL']
+    load_dotenv()  # Load environment variables from .env file
+    url = os.environ['UPWORK_SEARCH_URL'] or os.getenv('UPWORK_SEARCH_URL')
     
     with SB(uc=True, test=True, locale="en") as sb:
         sb.uc_open_with_reconnect(url, 8)

@@ -2,6 +2,7 @@ import json
 import requests
 from datetime import datetime
 import os
+from gemini_client import test_gemini_api
 
 class NocodbClient:
     def __init__(self, base_url, token):
@@ -121,6 +122,8 @@ class NocodbClient:
         # First filter jobs by rating
         high_rated_jobs = [job for job in jobs if job.get("rating") and float(job["rating"]) > 4.2]
         print(f"High rated jobs to process: {len(high_rated_jobs)}")
+
+       
         
         # Clean up old records before sending new ones
         self.cleanup_old_records(max_rows=100)
@@ -144,7 +147,34 @@ class NocodbClient:
             
         # Filter out jobs that already exist
         new_jobs = [job for job in high_rated_jobs if job.get("job_uid") not in existing_job_uids]
-        print(f"\nNew jobs after filtering: {len(new_jobs)}")
+        print(f"\nNew jobs after filtering low rated jobs: {len(new_jobs)}")
+
+        #send jobs to Gemini
+        if new_jobs:
+            gemini_response = test_gemini_api(jobs=new_jobs)
+            
+            if gemini_response is not None:
+                # Step 1: Convert Gemini response into a lookup dictionary
+                gemini_lookup = {}
+                # print(f"Gemini response: {gemini_response}")
+                for job in new_jobs:
+                    job_uid = job.get('job_uid')
+                    if job_uid in gemini_response:
+                        gemini_lookup[job_uid] = gemini_response[job_uid]
+                        # print(f"Gemini lookup: {gemini_lookup}")
+                
+                # Step 2: Update new_jobs with Gemini response
+                for job in new_jobs:
+                    job_uid = job.get('job_uid')
+                    if job_uid in gemini_lookup:
+                        job.update(gemini_lookup[job_uid])
+                
+                # # Step 3: Filter out jobs that are not relevant to the resume
+                # new_jobs = [job for job in new_jobs if job.get("relevant")]
+                # print(f"\nNew jobs after filtering relevant jobs: {len(new_jobs)}")
+                # # print(f"New jobs after filtering: {new_jobs}")
+            else:
+                print("No Gemini response received, skipping job filtering")
 
         if not new_jobs:
             print("No new jobs to send.")
