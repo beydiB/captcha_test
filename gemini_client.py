@@ -11,7 +11,7 @@ def test_gemini_api(jobs):
     api_key = os.environ['GEMINI_API_KEY'] or os.getenv("GEMINI_API_KEY")
     
     # Resume Summary
-    resume_summary = os.environ['RESUME'] or os.getenv("RESUME")
+    resume_summary = os.getenv("RESUME")
 
     # Job Listings
     job_listings = jobs
