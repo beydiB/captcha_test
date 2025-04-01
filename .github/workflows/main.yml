@@ -19,6 +19,7 @@ env:
   MY_PROXY: ${{ secrets.MY_PROXY }}
   UPWORK_SECURITY_QUESTION_ANSWER: ${{ secrets.UPWORK_SECURITY_QUESTION_ANSWER }}
   GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+  RESUME: ${{ vars.RESUME }}
 jobs:
   build:
 
