@@ -49,8 +49,8 @@ class NocodbClient:
                 delete_params = {
                     "limit": 25,
                     "sort": "job_uid",  # Sort ascending to get oldest records
-                    "fields": "id,job_uid",  # Only get id and job_uid fields
-                    "select": "id,job_uid"  # Explicitly select only these fields
+                    "fields": "id",  # Only get id and job_uid fields
+                    "select": "id"  # Explicitly select only these fields
                 }
                 response = requests.get(self.base_url, headers=self.headers, params=delete_params)
                 print(f"Rows to be deleted: {response.text}")
