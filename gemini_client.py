@@ -12,6 +12,7 @@ def test_gemini_api(jobs):
     
     # Resume Summary
     resume_summary = os.getenv("RESUME")
+    print(f"Resume Summary: {resume_summary}")
 
     # Job Listings
     job_listings = jobs
