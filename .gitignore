@@ -70,4 +70,6 @@ downloaded_files/
 *.xlsx
 *.xls
 *.db
-*.sqlite3
+*.sqlite3.env
+.env
+.env
