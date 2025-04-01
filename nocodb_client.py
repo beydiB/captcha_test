@@ -52,9 +52,10 @@ class NocodbClient:
                     "fields": "id"
                 }
                 response = requests.get(self.base_url, headers=self.headers, params=delete_params)
+                print(f"Response: {response.text}")
                 
                 if response.status_code != 200:
-                    print(f"Failed to get records to delete. Response: {response.text}")
+                    # print(f"Failed to get records to delete. Response: {response.text}")
                     return False
                     
                 records_to_delete = response.json()['list']
